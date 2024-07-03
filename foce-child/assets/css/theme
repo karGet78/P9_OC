@@ -1,0 +1,134 @@
+@charset "UTF-8";
+/* Animation fadeIn pour les sections */
+section {
+  opacity: 0;
+  overflow: hidden;
+}
+
+section.visible {
+  animation: fadeInAnimation ease-in-out 3s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+/* Animation pour les titres des sections */
+@keyframes slideUpFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(100px); /* Part de 20px en bas */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* Atteint la position finale */
+  }
+}
+span.fade-in-title {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(100px); /* Position initiale hors écran en bas */
+  transition: opacity 1s ease-out, transform 1s ease-out; /* Durée de 3s */
+}
+
+span.fade-in-title.visible {
+  opacity: 1;
+  transform: translateY(0); /* Position finale */
+}
+
+/* Animation fleurs */
+@keyframes rotateFlower {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+:root {
+  --rotation: 12s;
+}
+
+/* Appliquer l'animation à tous les pseudo-éléments nécessaires */
+.story h2::after,
+.story__article::after,
+#studio h2::before,
+#studio h2::after,
+.site-footer::before,
+.site-footer::after,
+.site-footer ul::after {
+  animation: rotateFlower var(--rotation) linear infinite;
+}
+
+/* Ajustement spécifique pour l'image de fond */
+.story h2::before {
+  content: url("../images/sunflower_leaves.png");
+  position: absolute;
+  left: 0;
+  top: 1.8em;
+  z-index: -1;
+}
+
+.story h2::after {
+  content: url("../images/Sunflower.png");
+  position: absolute;
+  left: 0.7em;
+  top: 6em;
+}
+
+.oscar {
+  margin-top: 2em;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+.oscar .oscar__texte {
+  width: 752px;
+  height: 450px;
+  font-size: 2.8rem;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 700;
+  line-height: 53px;
+  letter-spacing: -0.02em;
+  background-image: url("../images/orange_oscar_bg.png");
+  background-position: center;
+  background-size: contain;
+  color: #fff5e9;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  padding-top: 3.4em;
+  text-align: left;
+}
+.oscar .oscar__texte::before {
+  content: url("../images/Sunflower.png");
+  position: absolute;
+  left: 1.5em;
+  top: 0em;
+  animation: rotateFlower var(--rotation) linear infinite; /* 5s pour une rotation complète en 5 secondes */
+}
+.oscar .oscar__logo {
+  width: 278px;
+  height: 129px;
+}
+.oscar .oscar__logo::after {
+  content: url("../images/orchid.png");
+  position: absolute;
+  right: -5em;
+  bottom: 20em;
+  animation: rotateFlower var(--rotation) linear infinite;
+}
+
+.site-footer::before {
+  display: none;
+}
+
+.site-footer::after {
+  display: none;
+}
+
+/*# sourceMappingURL=theme.map */

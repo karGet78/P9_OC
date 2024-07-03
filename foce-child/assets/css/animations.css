@@ -1,0 +1,77 @@
+@charset "UTF-8";
+/* -- Animation fadeIn pour les sections -- */
+[id^=section-] {
+  opacity: 0;
+}
+
+[id^=section-].visible {
+  animation: fadeInAnimation ease-in-out 2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+/* -- Animation pour les mots des titres -- */
+span.animation-title-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+span.animation-title-word.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* -- Animation Rotation des fleurs -- */
+@keyframes rotateFlower {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* -- Sélection des pseudo-éléments pour l'animation fleurs -- */
+.story h2::after,
+.story__article::after,
+#studio h2::before,
+#studio h2::after,
+.site-footer::after,
+.site-footer ul::after {
+  animation: rotateFlower 10s linear infinite;
+}
+
+/* -- Animation de flottement du logo -- */
+@keyframes floatAnimation {
+  0% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-30px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  75% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.banner__content img {
+  display: inline-block;
+  animation: floatAnimation 3s infinite ease-in-out;
+  width: 680px;
+  height: auto;
+}
+
+/*# sourceMappingURL=animations.css.map */
