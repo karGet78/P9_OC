@@ -30,34 +30,12 @@ get_header();
     $characters_query = new WP_Query($args);
     ?>
     <article id="characters">
-        <div class="main-character">
-            <h3 class="title">Les personnages</h3>
-            <?php
-            $main_character = $characters_query->posts[0];
-            echo '<figure>';
-            echo get_the_post_thumbnail( $main_character->ID, 'full' );
-            echo '<figcaption>'. $main_character->post_title . '</figcaption>';
-            echo '</figure>';
-            $characters_query->next_post();
-            ?>
-        </div>
-        <div class="other-characters">
-            <?php
-            while ( $characters_query->have_posts() ) {
-                $characters_query->the_post();
-                echo '<figure>';
-                echo get_the_post_thumbnail( get_the_ID(), 'full' );
-                echo '<figcaption>';
-                the_title();
-                echo'</figcaption>';
-                echo '</figure>';
-            }
-            ?>
-        </div>
-    </article>
+            <?php get_template_part('templates/characters-carousel'); ?>
+            </article>
+
     <article id="place">
   <div>
-    <h3 class="title">Le Lieu</h3>
+    <h3 class="title title-mobile-specific">Le Lieu</h3>
     <div class="place__nuages">
       <img id="grand-nuage" class="big-cloud" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/big_cloud.png'; ?>" alt="Grand Nuage">
       <img id="petit-nuage" class="little-cloud" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/little_cloud.png'; ?>" alt="Petit Nuage">
@@ -68,7 +46,7 @@ get_header();
 </section>
 
 <!-- <section id="section-studio" class="studio"> -->
-<section id="studio" class="studio">
+<section id="studio" class="section-studio">
     <h2 class="title">Studio Koukaki</h2>
     <div>
         <p>Acteur majeur de l’animation, Koukaki est un studio intégré fondé en 2012 qui créé, produit et distribue des programmes originaux dans plus de 190 pays pour les enfants et les adultes. Nous avons deux sections en activité : le long métrage et le court métrage. Nous développons des films fantastiques, principalement autour de la culture de notre pays natal, le Japon.</p>

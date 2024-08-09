@@ -1,0 +1,315 @@
+@charset "UTF-8";
+/* -- Animation fadeIn pour les sections -- */
+[id^=section-] {
+  opacity: 0;
+}
+
+[id^=section-].visible {
+  animation: fadeInAnimation ease-in-out 2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+/* -- Animation pour les mots des titres -- */
+span.animation-title-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+span.animation-title-word.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* -- Animation Rotation des fleurs -- */
+@keyframes rotateFlower {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* -- Sélection des pseudo-éléments pour l'animation fleurs -- */
+.story h2::after,
+.story__article::after,
+#studio h2::before,
+#studio h2::after,
+.site-footer::after,
+.site-footer ul::after {
+  animation: rotateFlower 10s linear infinite;
+}
+
+/* -- Animation de flottement du logo -- */
+@keyframes floatAnimation {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.banner__content img {
+  display: inline-block;
+  animation: floatAnimation 3s infinite ease-in-out;
+  width: 680px;
+  height: auto;
+}
+
+/* -- Animation titres nouveau menu ouvert -- */
+@keyframes animationTitreMenu {
+  0% {
+    opacity: 0;
+    transform: translateY(200px);
+  }
+  20% {
+    opacity: 0.5;
+    transform: translateY(150px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(80px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media screen and (min-width: 700px) {
+  .menu-toggle {
+    display: block;
+  }
+}
+.main-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main-navigation .line {
+  height: 2px;
+  margin-block: 8px;
+  width: 40px;
+  background-color: black;
+}
+.main-navigation ul {
+  height: 60%;
+}
+
+.site-title {
+  list-style-type: none;
+  text-align: center;
+  flex: 1;
+}
+
+.closeMenu {
+  margin-left: auto;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  z-index: 1000;
+}
+
+.menu-toggle {
+  margin-right: 40px !important;
+  cursor: pointer;
+}
+
+.menu-toggle.cross .line:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.cross .line:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 6px);
+}
+
+.menu-toggle.cross .line:nth-child(3) {
+  transform: rotate(-45deg) translate(8px, -6px);
+}
+
+.openMenu {
+  display: none;
+  width: 100%;
+  position: fixed;
+  top: 80px;
+  left: 0;
+  height: 110vh;
+  background-color: #fff5e9;
+  z-index: 9999;
+  animation: fadeInAnimation ease-in-out 2s;
+  overflow-y: auto;
+}
+.openMenu.active {
+  display: block;
+}
+.openMenu__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+.openMenu__content--logo {
+  margin: 5em auto 20px auto;
+  width: 154px;
+  animation: floatAnimation 3s infinite ease-in-out;
+}
+.openMenu__content ul {
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.openMenu__content ul li {
+  margin: 20px;
+  font-size: 3em;
+  font-weight: 400;
+  line-height: 1.4em;
+  text-align: center;
+}
+.openMenu__content ul li a {
+  animation: animationTitreMenu 2s ease-out;
+}
+.openMenu__content ul li:hover,
+.openMenu__content ul li a:hover {
+  text-shadow: 0 0 14px #ff5c00;
+}
+.openMenu__content ul li.story::before {
+  content: url("../images/Blue-cat.png");
+  position: absolute;
+  top: -2em;
+  left: -6em;
+  transform: rotate(17.86deg);
+  animation: floatAnimation 3s infinite ease-in-out;
+}
+.openMenu__content ul li.story::after {
+  content: url("../images/Sunflower.png");
+  position: absolute;
+  top: -3em;
+  left: 10em;
+  animation: rotateFlower 10s linear infinite;
+}
+.openMenu__content ul li.characters::before {
+  content: url("../images/Small-flower.png");
+  position: absolute;
+  top: 0em;
+  left: -7em;
+  animation: rotateFlower 10s linear infinite;
+}
+.openMenu__content ul li.characters::after {
+  content: url("../images/Grey-cat.png");
+  position: absolute;
+  top: 1em;
+  left: 9em;
+  animation: floatAnimation 3s infinite ease-in-out;
+}
+.openMenu__content ul li.place::before {
+  content: url("../images/Orange-cat.png");
+  position: absolute;
+  top: 2em;
+  left: -10em;
+  animation: floatAnimation 3s infinite ease;
+}
+.openMenu__content ul li.place::after {
+  content: url("../images/Small-random-flower.png");
+  position: absolute;
+  top: -3em;
+  left: 18.3em;
+  animation: rotateFlower 10s linear infinite;
+}
+.openMenu__content ul li.studio::before {
+  content: url("../images/orchid.png");
+  position: absolute;
+  top: -9em;
+  left: -12.5em;
+  animation: rotateFlower 10s linear infinite;
+}
+.openMenu__content ul li.studio::after {
+  content: url("../images/hibiscus_footer.png");
+  position: absolute;
+  top: -2em;
+  left: 9em;
+  animation: rotateFlower 10s linear infinite;
+}
+.openMenu__content--footer {
+  width: 100%;
+  text-align: center;
+  padding-bottom: 20px;
+  margin-top: 8em;
+}
+
+/* MEDIA QUERIES GRAND ECRAN */
+@media screen and (max-width: 1000px) {
+  .menu-toggle {
+    margin-right: 5px !important;
+  }
+  .openMenu ul li {
+    font-size: 3em;
+  }
+  .openMenu.active .studio::after {
+    display: none !important;
+  }
+  .openMenu__content--footer {
+    margin-top: -18em !important;
+  }
+}
+/* MEDIA QUERY POUR MOBILE */
+@media screen and (max-width: 480px) {
+  .openMenu ul li.story::before,
+  .openMenu ul li.story::after,
+  .openMenu ul li.characters::before,
+  .openMenu ul li.characters::after,
+  .openMenu ul li.place::before,
+  .openMenu ul li.place::after,
+  .openMenu ul li.studio::before,
+  .openMenu ul li.studio::after {
+    display: none !important;
+  }
+  .openMenu__content {
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
+  .openMenu ul {
+    margin-top: 0em;
+  }
+  .openMenu__content--footer {
+    margin-top: -20em !important;
+  }
+  .openMenu ul li {
+    width: 100% !important;
+    font-size: 1.5em !important;
+    margin: 10px 0 !important;
+  }
+  /* Désactivation de l'image hibiscus avec le menu ouvert */
+  .openMenu.active .studio::after {
+    display: none !important;
+  }
+  .site-title {
+    font-size: 1.2em !important;
+  }
+}
+
+/*# sourceMappingURL=newMenu.css.map */

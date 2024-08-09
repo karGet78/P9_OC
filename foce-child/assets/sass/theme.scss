@@ -1,6 +1,6 @@
 @import "animations";
 
-/* -- Vidéo & bannière de la section banner & mode mobile-- */
+/* -- Vidéo & bannière section banner & mode mobile-- */
 .banner {
   position: relative;
   overflow: hidden;
@@ -59,23 +59,24 @@
     left: 0;
     z-index: 10;
 
-    &--image {
-      position: absolute;
-      transition: transform 0.5s ease-out; /* Animation de déplacement */
-    }
-
     .big-cloud {
-      top: 60px;
-      right: -300px; /* Position initiale hors du cadre à droite */
+      position: absolute;
+      top: 10%;
+      left: calc(130% + 300px);
+      transform: translateX(0);
       z-index: 11;
       filter: blur(14px);
+      transition: transform 0.5s ease-out;
     }
 
     .little-cloud {
-      top: 270px;
-      right: -300px; /* Position initiale hors du cadre à droite */
+      position: absolute;
+      top: 35%;
+      left: calc(110% + 300px);
+      transform: translateX(0);
       z-index: 11;
       filter: blur(8px);
+      transition: transform 0.5s ease-out;
     }
   }
 
@@ -83,10 +84,12 @@
     position: relative;
     z-index: 12;
   }
+
+  h3.title {
+    word-spacing: 1px; 
+    white-space: nowrap;
+  }
 }
-
-
-
 
 /* -- Section OSCAR -- */
 .oscar {
@@ -95,6 +98,7 @@
   justify-content: center;
   align-items: center;
   margin-top: 20px;
+
   & .oscar__texte {
     font-family: "Quicksand", sans-serif;
     font-weight: 700;
@@ -110,6 +114,8 @@
     background-image: url("../images/orange_oscar_bg.png");
     background-position: center;
     background-size: contain;
+    position: relative; 
+
     &::before {
       content: url("../images/Sunflower.png");
       position: absolute;
@@ -118,9 +124,11 @@
       animation: rotateFlower 10s linear infinite;
     }
   }
+
   & .oscar__logo {
     width: 278px;
     height: 129px;
+
     &::after {
       content: url("../images/orchid.png");
       position: absolute;
@@ -131,7 +139,158 @@
   }
 }
 
+// Pour enlever les fleurs du footer
 .site-footer::before,
 .site-footer::after {
   display: none;
+}
+
+// Carrossel de la Section personnages
+#characters {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  h3 {
+    width: 100%;
+    padding: 50px;
+    text-align: left; 
+    background-image: url("../images/orange_characters_bg.png"); 
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin: 0 0 -40px 0; 
+  }
+}
+
+.characters-slider {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  width: 100%;
+  max-width: 100%;
+  padding: 10px 0;
+
+  .swiper-slide {
+    margin: 0 30px;
+
+    img {
+      display: block;
+      max-width: 400px;
+      width: 350px;
+      height: 350px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-top: -20px;
+      font-size: 20px;
+      font-family: Roboto, sans-serif;
+    }
+  }
+}
+
+@media (min-width: 300px) and (max-width: 1000px) {
+  .characters-slider .swiper-slide img {
+    display: block;
+    max-width: 250px;
+    width: 250px;
+    height: 250px;
+  }
+ .banner__content img {
+    width: 150px; /* Taille pour les tablettes */
+    height: auto;
+  }
+}
+
+/**************** RESPONSIVE MOBILE *******************/
+@media all and (max-width: 480px) {
+  #background-video {
+    display: none;
+  }
+  .background {
+    background-image: url("../images/banner.png");
+    background-size: cover;
+    background-position: center;
+  }
+
+  h2.title {
+    font-size: 1.4rem;
+  }
+
+  h3.title {
+    font-size: 2rem;
+  }
+
+  #characters span,
+  #place span {
+    top: 100px;
+  }
+
+  .oscar {
+    flex-direction: column; 
+    align-items: center; 
+  }
+
+  .oscar__texte {
+    font-size: 1.4rem !important;
+    line-height: 1.6rem !important;
+    width: 90% !important; 
+    height: auto !important; 
+    padding: 20px !important; 
+    background-size: contain !important;
+    text-align: center !important; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; 
+
+    &::before {
+      display: none; 
+    }
+  }
+
+  .oscar__logo {
+    max-width: 70%;
+    margin-top: 20px; 
+    text-align: center; 
+    
+    &::after {
+      display: none; 
+    }
+  }
+
+  .site-footer {
+    height: 200px;
+    padding: 10px 0;
+    ul {
+      position: relative;
+      transform-origin: center;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  /* Styles spécifiques pour le carrousel en version mobile */
+  .characters-slider {
+    .swiper-wrapper {
+      display: flex;
+    }
+
+    .swiper-slide {
+      width: 80% !important; 
+      max-width: 375px !important;
+      margin: 0 !important; 
+      text-align: center;
+    }
+
+    img {
+      width: 150px !important; 
+      height: auto !important;
+    }
+
+    p {
+      margin-top: -10px; 
+      font-size: 14px;
+    }
+  }
 }

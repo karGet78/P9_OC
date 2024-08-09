@@ -1,0 +1,248 @@
+@import 'animations.scss';
+
+@media screen and (min-width: 700px) {
+  .menu-toggle {
+    display: block;
+  }
+}
+
+.main-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .line {
+    height: 2px;
+    margin-block: 8px;
+    width: 40px;
+    background-color: black;
+  }
+
+  ul {
+    height: 60%;
+  }
+}
+
+.site-title {
+  list-style-type: none;
+  text-align: center;
+  flex: 1;
+}
+
+.closeMenu {
+  margin-left: auto;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  z-index: 1000;
+}
+
+.menu-toggle {
+  margin-right: 40px !important;
+  cursor: pointer;
+}
+
+.menu-toggle.cross .line:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.cross .line:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 6px);
+}
+
+.menu-toggle.cross .line:nth-child(3) {
+  transform: rotate(-45deg) translate(8px, -6px);
+}
+
+.openMenu {
+  display: none;
+  width: 100%;
+  position: fixed;
+  top: 80px;
+  left: 0;
+  height: 110vh;
+  background-color: #fff5e9;
+  z-index: 9999;
+  animation: fadeInAnimation ease-in-out 2s;
+  overflow-y: auto;
+
+  &.active {
+    display: block;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+
+    &--logo {
+      margin: 5em auto 20px auto;
+      width: 154px;
+      animation: floatAnimation 3s infinite ease-in-out;
+    }
+
+    ul {
+      flex-direction: column;
+      list-style: none;
+      padding: 0;
+      margin-top: 10px;
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center; 
+      li {
+        margin: 20px;
+        font-size: 3em;
+        font-weight: 400;
+        line-height: 1.4em;
+        text-align: center;
+
+        a {
+          animation: animationTitreMenu 2s ease-out;
+        }
+
+        &:hover,
+        a:hover {
+          text-shadow: 0 0 14px #ff5c00;
+        }
+
+        &.story::before {
+          content: url('../images/Blue-cat.png');
+          position: absolute;
+          top: -2em;
+          left: -6em;
+          transform: rotate(17.86deg);
+          animation: floatAnimation 3s infinite ease-in-out;
+        }
+
+        &.story::after {
+          content: url('../images/Sunflower.png');
+          position: absolute;
+          top: -3em;
+          left: 10em;
+          animation: rotateFlower 10s linear infinite;
+        }
+
+        &.characters::before {
+          content: url('../images/Small-flower.png');
+          position: absolute;
+          top: 0em;
+          left: -7em;
+          animation: rotateFlower 10s linear infinite;
+        }
+
+        &.characters::after {
+          content: url('../images/Grey-cat.png');
+          position: absolute;
+          top: 1em;
+          left: 9em;
+          animation: floatAnimation 3s infinite ease-in-out;
+        }
+
+        &.place::before {
+          content: url('../images/Orange-cat.png');
+          position: absolute;
+          top: 2em;
+          left: -10em;
+          animation: floatAnimation 3s infinite ease;
+        }
+
+        &.place::after {
+          content: url('../images/Small-random-flower.png');
+          position: absolute;
+          top: -3em;
+          left: 18.3em;
+          animation: rotateFlower 10s linear infinite;
+        }
+
+        &.studio::before {
+          content: url('../images/orchid.png');
+          position: absolute;
+          top: -9em;
+          left: -12.5em;
+          animation: rotateFlower 10s linear infinite;
+        }
+
+        &.studio::after {
+          content: url('../images/hibiscus_footer.png');
+          position: absolute;
+          top: -2em;
+          left: 9em;
+          animation: rotateFlower 10s linear infinite;
+        }            
+      }
+    }
+
+    &--footer {
+      width: 100%;
+      text-align: center;
+      padding-bottom: 20px;
+      margin-top: 8em;
+    }
+  }
+}
+
+/* MEDIA QUERIES GRAND ECRAN */
+@media screen and (max-width: 1000px) {
+  .menu-toggle {
+    margin-right: 5px !important;
+  }
+  .openMenu ul li {
+    font-size: 3em;
+  }
+  .openMenu.active .studio::after {
+    display: none !important;
+  }
+  .openMenu__content--footer {
+    margin-top: -18em !important; 
+  }
+}
+
+/* MEDIA QUERY POUR MOBILE */
+@media screen and (max-width: 480px) {
+  .openMenu ul li.story::before,
+  .openMenu ul li.story::after,
+  .openMenu ul li.characters::before,
+  .openMenu ul li.characters::after,
+  .openMenu ul li.place::before,
+  .openMenu ul li.place::after,
+  .openMenu ul li.studio::before,
+  .openMenu ul li.studio::after {
+    display: none !important; 
+  }
+
+  .openMenu__content {
+    align-items: center !important; 
+    justify-content: center !important; 
+    text-align: center !important; 
+    width: 100% !important; 
+  }
+
+  .openMenu ul {
+    margin-top: 0em;
+  }
+  .openMenu__content--footer {
+    margin-top: -20em !important; 
+  }
+  .openMenu ul li {
+    width: 100% !important; 
+    font-size: 1.5em !important; 
+    margin: 10px 0 !important; 
+  }
+
+  /* Désactivation de l'image hibiscus avec le menu ouvert */
+  .openMenu.active .studio::after {
+    display: none !important;
+  }
+.site-title {
+    font-size: 1.2em !important; 
+  }
+}
