@@ -5,7 +5,7 @@
 }
 
 [id^=section-].visible {
-  animation: fadeInAnimation ease-in-out 2s;
+  animation: fadeInAnimation ease-in-out 3s;
   animation-fill-mode: forwards;
 }
 
@@ -54,14 +54,8 @@ span.animation-title-word.visible {
   0% {
     transform: translateY(0);
   }
-  25% {
-    transform: translateY(-30px);
-  }
   50% {
-    transform: translateY(-10px);
-  }
-  75% {
-    transform: translateY(-20px);
+    transform: translateY(-15px);
   }
   100% {
     transform: translateY(0);
@@ -72,6 +66,26 @@ span.animation-title-word.visible {
   animation: floatAnimation 3s infinite ease-in-out;
   width: 680px;
   height: auto;
+}
+
+/* -- Animation titres nouveau menu ouvert -- */
+@keyframes animationTitreMenu {
+  0% {
+    opacity: 0;
+    transform: translateY(200px);
+  }
+  20% {
+    opacity: 0.5;
+    transform: translateY(150px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(80px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /*# sourceMappingURL=animations.css.map */

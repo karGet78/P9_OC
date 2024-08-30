@@ -8,11 +8,11 @@ document.addEventListener('DOMContentLoaded', function () {
     if (isActive) {
       openMenu.classList.remove('active');
       menuToggle.classList.remove('cross');
-      body.style.overflow = ''; // Enable scrolling
+      body.style.overflow = '';
     } else {
       openMenu.classList.add('active');
       menuToggle.classList.add('cross');
-      body.style.overflow = 'hidden'; // Disable scrolling
+      body.style.overflow = 'hidden';
     }
   });
 
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
     link.addEventListener('click', function () {
       openMenu.classList.remove('active');
       menuToggle.classList.remove('cross');
-      body.style.overflow = ''; // Enable scrolling
+      body.style.overflow = '';
     });
   });
 });
